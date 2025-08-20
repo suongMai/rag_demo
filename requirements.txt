@@ -1,0 +1,14 @@
+fastapi
+uvicorn
+streamlit
+langchain
+openai
+faiss-cpu
+unstructured
+python-docx
+PyPDF2
+requests
+langchain-community
+python-multipart
+tiktoken
+langchain-openai
