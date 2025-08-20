@@ -8,6 +8,8 @@ from  langchain_community.chat_models import  ChatOpenAI
 from langchain_openai import OpenAIEmbeddings
 import logging
 import tempfile
+from langchain.docstore.document import Document
+
 load_dotenv()
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
@@ -52,7 +54,7 @@ async def upload_contract(file: UploadFile):
 @app.get("/query-contract")
 def query_contract(q: str):
     if vector_store is None:
-        return {"error": "No contract uploaded."}
+        return {"error": "No report uploaded."}
     
     retriever = vector_store.as_retriever(search_type="similarity", search_kwargs={"k":3})
     qa = RetrievalQA.from_chain_type(
